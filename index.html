@@ -1,48 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Logging Out...</title>
   <style>
     body {
-      background-color: #111;
-      color: #fff;
+      background-color: black;
+      color: white;
       font-family: 'Segoe UI', sans-serif;
       text-align: center;
       padding-top: 100px;
+      overflow: hidden;
     }
-    .loader {
+
+    .loading {
       font-size: 24px;
-      margin-bottom: 20px;
       animation: blink 1s step-start infinite;
     }
+
     @keyframes blink {
-      50% { opacity: 0.2; }
+      50% { opacity: 0.3; }
     }
-    .tubelight {
+
+    .screen {
       display: none;
-      margin-top: 30px;
+      animation: flicker 2s forwards;
     }
-    img {
-      width: 300px;
+
+    @keyframes flicker {
+      0% { background-color: black; opacity: 0; }
+      10% { background-color: #ccc; opacity: 0.3; }
+      20% { background-color: black; opacity: 0.2; }
+      30% { background-color: #ddd; opacity: 0.5; }
+      40% { background-color: black; opacity: 0.3; }
+      50% { background-color: #eee; opacity: 0.6; }
+      60% { background-color: black; opacity: 0.5; }
+      70% { background-color: #fff; opacity: 0.8; }
+      80% { background-color: black; opacity: 0.7; }
+      90% { background-color: #fff; opacity: 0.9; }
+      100% { background-color: white; opacity: 1; }
+    }
+
+    .tubelight-content {
+      display: none;
+      color: #000;
+      margin-top: 50px;
     }
   </style>
 </head>
 <body>
 
-  <div class="loader">Logging you out from unknown device...</div>
+  <div class="loading" id="loading">Logging you out from all devices...</div>
 
-  <div class="tubelight">
-    <img src="https://media.giphy.com/media/J2kZUjz5p1RLa8fXfM/giphy.gif" alt="Tubelight On">
+  <div class="screen" id="screen"></div>
+
+  <main class="tubelight-content" id="light">
     <h1>Wah Tubelight! 💡</h1>
-    <p>Itna bhi kya serious? This was just a prank 😎</p>
-  </div>
+    <p>Itna bhi kya serious? Badaam kha 😎</p>
+  </main>
 
   <script>
-    setTimeout(() => {
-      document.querySelector('.loader').style.display = 'none';
-      document.querySelector('.tubelight').style.display = 'block';
-    }, 3000); // 3 seconds delay
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        document.getElementById('loading').style.display = 'none';
+        const screen = document.getElementById('screen');
+        screen.style.display = 'block';
+
+        setTimeout(() => {
+          screen.style.display = 'none';
+          document.body.style.backgroundColor = 'white';
+          document.getElementById('light').style.display = 'block';
+        }, 2500);
+      }, 2500);
+    });
   </script>
 
 </body>
