@@ -1,13 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Wah Tubelight</title>
+  <meta charset="UTF-8">
+  <title>Logging Out...</title>
   <style>
-    body { text-align: center; padding-top: 100px; font-family: Arial; background: #f4f4f4; }
-    h1 { font-size: 48px; color: #333; }
+    body {
+      background-color: #111;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding-top: 100px;
+    }
+    .loader {
+      font-size: 24px;
+      margin-bottom: 20px;
+      animation: blink 1s step-start infinite;
+    }
+    @keyframes blink {
+      50% { opacity: 0.2; }
+    }
+    .tubelight {
+      display: none;
+      margin-top: 30px;
+    }
+    img {
+      width: 300px;
+    }
   </style>
 </head>
 <body>
-  <h1>Wah Tubelight!</h1>
+
+  <div class="loader">Logging you out from unknown device...</div>
+
+  <div class="tubelight">
+    <img src="https://media.giphy.com/media/J2kZUjz5p1RLa8fXfM/giphy.gif" alt="Tubelight On">
+    <h1>Wah Tubelight! 💡</h1>
+    <p>Itna bhi kya serious? This was just a prank 😎</p>
+  </div>
+
+  <script>
+    setTimeout(() => {
+      document.querySelector('.loader').style.display = 'none';
+      document.querySelector('.tubelight').style.display = 'block';
+    }, 3000); // 3 seconds delay
+  </script>
+
 </body>
 </html>
